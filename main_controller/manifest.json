@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "Main Controller",
+    "version": "1.0",
+    "description": "Sends commands to play YouTube videos on client devices.",
+    "permissions": ["tabs"],
+    "host_permissions": [
+        "http://localhost:5000/",
+        "ws://localhost:8080/"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
+    }
+}
