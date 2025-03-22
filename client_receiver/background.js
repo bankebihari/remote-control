@@ -2,7 +2,8 @@ let ws;
 
 function connectWebSocket() {
     try {
-        ws = new WebSocket("ws://localhost:8080");
+        const ws = new WebSocket("wss://remote-control-7c5u.onrender.com");
+
 
         ws.onopen = () => {
             console.log("Client Receiver WebSocket connected");

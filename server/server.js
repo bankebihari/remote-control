@@ -1,21 +1,25 @@
 const WebSocket = require("ws");
+const express = require("express");
+const http = require("http");
+const cors = require("cors");
 
-const wss = new WebSocket.Server({ port: 8080 });
+const PORT = process.env.PORT || 8080;
 
-console.log("WebSocket server is running on ws://localhost:8080");
+const app = express();
+app.use(cors());
+
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
+server.listen(PORT, () => {
+    console.log(`WebSocket server running on port ${PORT}`);
+});
 
 wss.on("connection", (ws) => {
     console.log("Client connected");
 
     ws.on("message", (message) => {
-        // ✅ Convert Buffer to string if necessary
-        if (message instanceof Buffer) {
-            message = message.toString(); // Convert to string
-        }
-
         console.log("Received:", message);
-
-        // Send message to all connected clients
         wss.clients.forEach((client) => {
             if (client !== ws && client.readyState === WebSocket.OPEN) {
                 client.send(message);
