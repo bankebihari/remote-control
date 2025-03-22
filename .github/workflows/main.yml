@@ -1,0 +1,13 @@
+name: Keep Server Alive
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"  # Runs every 10 minutes
+
+jobs:
+  ping-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Keep-Alive Request
+        run: |
+          curl -X GET https://remote-control-7c5u.onrender.com/ || echo "Server might be down"
