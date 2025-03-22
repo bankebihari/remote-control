@@ -38,3 +38,8 @@ wss.on("connection", (ws) => {
         console.log("Client disconnected");
     });
 });
+
+// Keep the server alive with a health check
+app.get("/", (req, res) => {
+    res.send("WebSocket Server is running.");
+});
