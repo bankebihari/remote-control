@@ -5,8 +5,10 @@
     "description": "Sends commands to play YouTube videos on client devices.",
     "permissions": ["tabs"],
     "host_permissions": [
-        "http://localhost:5000/",
-        "ws://localhost:8080/"
+        
+            "https://remote-control-7c5u.onrender.com/",
+            "wss://remote-control-7c5u.onrender.com/"
+            
     ],
     "background": {
         "service_worker": "background.js"

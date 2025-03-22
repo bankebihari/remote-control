@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let ws;
 
     function connectWebSocket() {
-        ws = new WebSocket("ws://localhost:8080");
+        ws = new WebSocket("wss://remote-control-7c5u.onrender.com"); // ✅ Correct WebSocket URL
 
         ws.onopen = () => {
             console.log("✅ WebSocket connected.");
